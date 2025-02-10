@@ -13,7 +13,9 @@ import {
   FaDribbble,
   FaMicrosoft,
   FaDownload,
-  FaInstagram
+  FaInstagram,
+  FaEnvelope,
+  FaWhatsapp
 } from 'react-icons/fa'
 import { 
   SiNextdotjs, 
@@ -33,11 +35,36 @@ import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import { FaCode, FaServer, FaCloud, FaNetworkWired } from 'react-icons/fa'
 import { useState, useEffect } from 'react'
+import emailjs from '@emailjs/browser';
 
 // Dynamic import for ProjectCard
 const ProjectCard = dynamic(() => import('../components/project-card'), {
   ssr: false
 })
+
+// Tambahkan function untuk handle email
+const handleEmailClick = () => {
+  const templateParams = {
+    to_name: 'Kiky',
+    from_name: 'Portfolio Visitor',
+    subject: 'New Contact from Portfolio Website',
+    message: 'Someone wants to connect with you!',
+    reply_to: 'kikyrestu@gmail.com'
+  };
+
+  emailjs.send(
+    'service_dqkt3bo',    // Service ID
+    'template_cgxkewe',   // Template ID
+    templateParams,
+    'YOUR_PUBLIC_KEY'     // Masih perlu Public Key
+  )
+  .then((response) => {
+    console.log('Email sent!', response.status);
+  })
+  .catch((err) => {
+    console.log('Failed to send email:', err);
+  });
+};
 
 export default function Home() {
   const roles = [
@@ -538,105 +565,70 @@ export default function Home() {
 
       {/* Contact Section */}
       <section id="contact" className="py-20 lg:py-32 relative">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="max-w-3xl mx-auto space-y-12"
+            className="text-center max-w-2xl mx-auto mb-16"
           >
-            {/* Contact Header */}
-            <div className="text-center space-y-4">
-              <p className="text-purple-400 font-mono">What's Next?</p>
-              <h2 className="text-4xl lg:text-5xl font-bold text-slate-200">Get In Touch</h2>
-              <p className="text-slate-400 max-w-lg mx-auto">
-                I'm currently open for new opportunities. Send me a message and I'll try my best to get back to you!
-              </p>
-            </div>
+            <p className="text-purple-400 font-mono mb-3">Get in Touch</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-200 mb-4">
+              Let's Work Together
+            </h2>
+            <p className="text-slate-400">
+              I'm currently available for freelance work and open to new opportunities.
+            </p>
+          </motion.div>
 
-            {/* Contact Form */}
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Name */}
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-slate-300">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full px-4 py-3 rounded-lg bg-slate-800/50 border border-slate-700 
-                             text-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-400/50 
-                             focus:border-purple-400/50"
-                    placeholder="John Doe"
-                  />
-                </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Email Contact */}
+            <motion.a
+              onClick={handleEmailClick}
+              href="mailto:kikyrestu@gmail.com"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="group flex flex-col items-center p-8 bg-slate-800/50 rounded-lg 
+                         border border-slate-700 hover:border-purple-400/50 transition-colors"
+            >
+              <FaEnvelope className="w-8 h-8 text-purple-400 mb-4 
+                            group-hover:scale-110 transition-transform" />
+              <h3 className="text-xl font-bold text-slate-200 mb-2">Email Me</h3>
+              <p className="text-slate-400 text-center">kikyrestu@gmail.com</p>
+            </motion.a>
 
-                {/* Email */}
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-slate-300">
-                    Your Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 rounded-lg bg-slate-800/50 border border-slate-700 
-                             text-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-400/50 
-                             focus:border-purple-400/50"
-                    placeholder="john@example.com"
-                  />
-                </div>
-              </div>
+            {/* WhatsApp Contact */}
+            <motion.a
+              href="https://wa.me/6281234567890" // Ganti dengan nomor WhatsApp kamu
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="group flex flex-col items-center p-8 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-purple-400/50 transition-colors"
+            >
+              <FaWhatsapp className="w-8 h-8 text-purple-400 mb-4 group-hover:scale-110 transition-transform" />
+              <h3 className="text-xl font-bold text-slate-200 mb-2">WhatsApp</h3>
+              <p className="text-slate-400 text-center">Let's chat on WhatsApp</p>
+            </motion.a>
+          </div>
 
-              {/* Subject */}
-              <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-medium text-slate-300">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  required
-                  className="w-full px-4 py-3 rounded-lg bg-slate-800/50 border border-slate-700 
-                           text-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-400/50 
-                           focus:border-purple-400/50"
-                  placeholder="Project Inquiry"
-                />
-              </div>
-
-              {/* Message */}
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium text-slate-300">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows="6"
-                  className="w-full px-4 py-3 rounded-lg bg-slate-800/50 border border-slate-700 
-                           text-slate-300 focus:outline-none focus:ring-2 focus:ring-purple-400/50 
-                           focus:border-purple-400/50 resize-none"
-                  placeholder="Your message here..."
-                ></textarea>
-              </div>
-
-              {/* Submit Button */}
-              <div className="text-center">
-                <button
-                  type="submit"
-                  className="px-8 py-3 bg-purple-500/10 text-purple-400 rounded-lg
-                           hover:bg-purple-500/20 transition-colors duration-300
-                           focus:outline-none focus:ring-2 focus:ring-purple-400/50"
-                >
-                  Send Message
-                </button>
-              </div>
-            </form>
+          {/* Alternative Contact Methods */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-center mt-12"
+          >
+            <p className="text-slate-400">
+              You can also find me on{' '}
+              <a 
+                href="https://www.linkedin.com/in/kiky-restu-noviansyah/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-400 hover:text-purple-300 transition-colors"
+              >
+                LinkedIn
+              </a>
+              {' '}for professional inquiries
+            </p>
           </motion.div>
         </div>
       </section>
