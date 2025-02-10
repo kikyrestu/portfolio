@@ -36,11 +36,15 @@ import { motion } from 'framer-motion'
 import { FaCode, FaServer, FaCloud, FaNetworkWired } from 'react-icons/fa'
 import { useState, useEffect } from 'react'
 import emailjs from '@emailjs/browser';
+import { toast } from 'react-hot-toast';
 
 // Dynamic import for ProjectCard
 const ProjectCard = dynamic(() => import('../components/project-card'), {
   ssr: false
 })
+
+// Inisialisasi EmailJS
+emailjs.init("WwWmzGsHqrAww0QuH");
 
 // Tambahkan function untuk handle email
 const handleEmailClick = () => {
@@ -53,15 +57,17 @@ const handleEmailClick = () => {
   };
 
   emailjs.send(
-    'service_dqkt3bo',    // Service ID
-    'template_cgxkewe',   // Template ID
+    'service_dqkt3bo',
+    'template_cgxkewe',
     templateParams,
-    'YOUR_PUBLIC_KEY'     // Masih perlu Public Key
+    'WwWmzGsHqrAww0QuH'
   )
   .then((response) => {
+    toast.success('Email sent successfully!');
     console.log('Email sent!', response.status);
   })
   .catch((err) => {
+    toast.error('Failed to send email. Please try again.');
     console.log('Failed to send email:', err);
   });
 };
@@ -563,7 +569,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact/Get in Touch Section */}
       <section id="contact" className="py-20 lg:py-32 relative">
         <div className="container mx-auto px-4">
           <motion.div
@@ -581,55 +587,125 @@ export default function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Email Contact */}
-            <motion.a
-              onClick={handleEmailClick}
-              href="mailto:kikyrestu@gmail.com"
+            {/* Contact Form */}
+            <motion.form
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="group flex flex-col items-center p-8 bg-slate-800/50 rounded-lg 
-                         border border-slate-700 hover:border-purple-400/50 transition-colors"
-            >
-              <FaEnvelope className="w-8 h-8 text-purple-400 mb-4 
-                            group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold text-slate-200 mb-2">Email Me</h3>
-              <p className="text-slate-400 text-center">kikyrestu@gmail.com</p>
-            </motion.a>
+              className="space-y-6 bg-slate-800/50 p-8 rounded-lg border border-slate-700"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                
+                const templateParams = {
+                  to_name: 'Kiky',
+                  from_name: formData.get('name'),
+                  subject: 'New Contact from Portfolio Website',
+                  message: formData.get('message'),
+                  reply_to: formData.get('email')
+                };
 
-            {/* WhatsApp Contact */}
-            <motion.a
-              href="https://wa.me/6281234567890" // Ganti dengan nomor WhatsApp kamu
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="group flex flex-col items-center p-8 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-purple-400/50 transition-colors"
+                emailjs.send(
+                  'service_dqkt3bo',
+                  'template_cgxkewe',
+                  templateParams,
+                  'WwWmzGsHqrAww0QuH'
+                )
+                .then(() => {
+                  toast.success('Message sent successfully!');
+                  e.target.reset();
+                })
+                .catch(() => {
+                  toast.error('Failed to send message. Please try again.');
+                });
+              }}
             >
-              <FaWhatsapp className="w-8 h-8 text-purple-400 mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold text-slate-200 mb-2">WhatsApp</h3>
-              <p className="text-slate-400 text-center">Let's chat on WhatsApp</p>
-            </motion.a>
-          </div>
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  required
+                  className="w-full px-4 py-2 bg-slate-900/50 border border-slate-700 rounded-lg 
+                           focus:ring-2 focus:ring-purple-400 focus:border-transparent
+                           text-slate-300 placeholder-slate-500"
+                  placeholder="John Doe"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+                  Your Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  className="w-full px-4 py-2 bg-slate-900/50 border border-slate-700 rounded-lg 
+                           focus:ring-2 focus:ring-purple-400 focus:border-transparent
+                           text-slate-300 placeholder-slate-500"
+                  placeholder="john@example.com"
+                />
+              </div>
 
-          {/* Alternative Contact Methods */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-center mt-12"
-          >
-            <p className="text-slate-400">
-              You can also find me on{' '}
-              <a 
-                href="https://www.linkedin.com/in/kiky-restu-noviansyah/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-purple-400 hover:text-purple-300 transition-colors"
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  id="message"
+                  required
+                  rows="4"
+                  className="w-full px-4 py-2 bg-slate-900/50 border border-slate-700 rounded-lg 
+                           focus:ring-2 focus:ring-purple-400 focus:border-transparent
+                           text-slate-300 placeholder-slate-500"
+                  placeholder="Your message here..."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full px-6 py-3 bg-purple-500/10 text-purple-400 rounded-lg
+                         hover:bg-purple-500/20 transition-colors duration-300
+                         font-medium focus:outline-none focus:ring-2 focus:ring-purple-400"
               >
-                LinkedIn
-              </a>
-              {' '}for professional inquiries
-            </p>
-          </motion.div>
+                Send Message
+              </button>
+            </motion.form>
+
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="space-y-6"
+            >
+              <div className="bg-slate-800/50 p-8 rounded-lg border border-slate-700">
+                <h3 className="text-xl font-bold text-slate-200 mb-4">Other Ways to Connect</h3>
+                <div className="space-y-4">
+                  <a
+                    href="mailto:kikyrestu@gmail.com"
+                    className="flex items-center space-x-3 text-slate-300 hover:text-purple-400 transition-colors"
+                  >
+                    <FaEnvelope className="w-5 h-5" />
+                    <span>kikyrestu@gmail.com</span>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/kiky-restu-noviansyah/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 text-slate-300 hover:text-purple-400 transition-colors"
+                  >
+                    <FaLinkedin className="w-5 h-5" />
+                    <span>LinkedIn Profile</span>
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
