@@ -12,7 +12,8 @@ import {
   FaTwitter, 
   FaDribbble,
   FaMicrosoft,
-  FaDownload
+  FaDownload,
+  FaInstagram
 } from 'react-icons/fa'
 import { 
   SiNextdotjs, 
@@ -102,24 +103,19 @@ export default function Home() {
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/yourusername',
-      icon: <FaGithub className="w-5 h-5" />,
+      url: 'https://github.com/kikyrestu',
+      icon: <FaGithub className="w-6 h-6" />
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/yourusername',
-      icon: <FaLinkedin className="w-5 h-5" />,
+      url: 'https://www.linkedin.com/in/kiky-restu-noviansyah/',
+      icon: <FaLinkedin className="w-6 h-6" />
     },
     {
-      name: 'Twitter',
-      url: 'https://twitter.com/yourusername',
-      icon: <FaTwitter className="w-5 h-5" />,
-    },
-    {
-      name: 'Dribbble',
-      url: 'https://dribbble.com/yourusername',
-      icon: <FaDribbble className="w-5 h-5" />,
-    },
+      name: 'Instagram',
+      url: 'https://www.instagram.com/re_skye/',
+      icon: <FaInstagram className="w-6 h-6" />
+    }
   ]
 
   const [showBackToTop, setShowBackToTop] = useState(false)
