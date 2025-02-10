@@ -407,13 +407,22 @@ export default function Home() {
               githubUrl="https://github.com/kikyrestu/web-kasir"
             />
 
-            {/* WordPress Theme */}
+            {/* WordPress Plugin Project */}
             <ProjectCard 
-              title="WordPress Theme"
-              description="Custom WordPress theme for a local business, featuring custom post types and ACF integration."
-              tech={["WordPress", "PHP", "JavaScript"]}
-              image="/projects/wordpress.jpg"
-              liveUrl="https://client-website.com"
+              title="WordPress Custom Card Plugin"
+              description="Plugin WordPress kustom yang menambahkan widget card ke Elementor page builder. 
+                          Fitur meliputi integrasi ACF, opsi kustomisasi tombol, pengaturan style yang fleksibel, 
+                          dan dukungan responsive design."
+              tech={[
+                "PHP",
+                "WordPress",
+                "Elementor",
+                "ACF Pro",
+                "CSS",
+                "JavaScript"
+              ]}
+              image="/projects/Screenshot 2025-02-10 130218.jpg"
+              githubUrl="https://github.com/kikyrestu/plugin-custom"
             />
           </div>
 
