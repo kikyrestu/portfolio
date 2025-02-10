@@ -421,7 +421,7 @@ export default function Home() {
                 "CSS",
                 "JavaScript"
               ]}
-              image="/projects/Screenshot 2025-02-10 130218.jpg"
+              image="/projects/image-3.jpg"
               githubUrl="https://github.com/kikyrestu/plugin-custom"
             />
           </div>
