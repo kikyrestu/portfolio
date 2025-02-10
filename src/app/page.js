@@ -410,9 +410,9 @@ export default function Home() {
             {/* WordPress Plugin Project */}
             <ProjectCard 
               title="WordPress Custom Card Plugin"
-              description="Plugin WordPress kustom yang menambahkan widget card ke Elementor page builder. 
-                          Fitur meliputi integrasi ACF, opsi kustomisasi tombol, pengaturan style yang fleksibel, 
-                          dan dukungan responsive design."
+              description="A custom WordPress plugin that adds card widgets to the Elementor page builder. 
+                          Features include ACF integration, button customization options, flexible styling settings, 
+                          and responsive design support. Built to enhance content presentation with modern UI components."
               tech={[
                 "PHP",
                 "WordPress",
