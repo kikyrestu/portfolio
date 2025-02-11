@@ -124,6 +124,12 @@ export default function RootLayout({ children }) {
 
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
+
+        {/* Google Site Verification */}
+        <meta 
+          name="google-site-verification" 
+          content="google8366d1a87ce1c8d2" 
+        />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} ${spaceGrotesk.variable} ${outfit.variable} ${syne.variable} ${orbitron.variable} font-poppins`}>
         {children}
