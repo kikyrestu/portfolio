@@ -49,8 +49,8 @@ const orbitron = Orbitron({
 })
 
 export const metadata = {
-  title: "Kiky Restu Noviansyah - Frontend Developer Portfolio",
-  description: "Frontend Developer specializing in React, Next.js, and modern web technologies. View my latest projects and get in touch for collaboration.",
+  title: "Kiky Restu Noviansyah - Frontend Developer Portfolio | React & Next.js Expert Indonesia",
+  description: "Frontend Developer Indonesia spesialis React & Next.js. Ahli dalam pengembangan website modern, responsive design, dan clean code. Portofolio terbaik dengan pengalaman di berbagai proyek teknologi web terkini.",
   keywords: [
     "Kiky Restu Noviansyah",
     "Frontend Developer",
@@ -58,21 +58,35 @@ export const metadata = {
     "React Developer",
     "Next.js Developer",
     "Portfolio",
-    "Indonesia"
+    "Indonesia",
+    "Web Developer Indonesia",
+    "Frontend Engineer Jakarta",
+    "React.js Expert",
+    "Next.js Specialist",
+    "UI/UX Developer",
+    "JavaScript Developer Indonesia",
+    "TypeScript Expert",
+    "Web Development Services",
+    "Jasa Pembuatan Website",
+    "Portfolio Website",
+    "Professional Web Developer",
+    "Frontend Development Indonesia",
+    "React Native Developer"
   ],
   openGraph: {
-    title: 'Kiky Restu Noviansyah - Frontend Developer',
-    description: 'Frontend Developer specializing in React, Next.js, and modern web technologies',
+    title: 'Kiky Restu Noviansyah - Expert Frontend Developer Indonesia',
+    description: 'Frontend Developer spesialis React & Next.js dengan fokus pada performa dan user experience. Berpengalaman dalam pembuatan website modern dan aplikasi web yang scalable.',
     url: 'https://kikyrestunov.vercel.app',
-    siteName: 'Kiky Restu Portfolio',
+    siteName: 'Kiky Restu - Portfolio',
     images: [
       {
-        url: '/og-image.jpg', // Tambahkan gambar OG
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
+        alt: 'Kiky Restu Noviansyah - Professional Frontend Developer Portfolio'
       },
     ],
-    locale: 'en-US',
+    locale: 'id_ID',
     type: 'website',
   },
   robots: {
@@ -104,15 +118,15 @@ export default function RootLayout({ children }) {
         {/* Primary Meta Tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#0f172a" />
-        <meta name="description" content="Frontend Developer specializing in React, Next.js, and modern web technologies" />
-        <meta name="keywords" content="Kiky Restu Noviansyah, Frontend Developer, Web Developer, React, Next.js" />
+        <meta name="description" content="Frontend Developer Indonesia spesialis React & Next.js. Ahli dalam pengembangan website modern, responsive design, dan clean code. Portofolio terbaik dengan pengalaman di berbagai proyek teknologi web terkini." />
+        <meta name="keywords" content="Kiky Restu Noviansyah, Frontend Developer, Web Developer, React Developer, Next.js Developer, Portfolio, Indonesia, Web Developer Indonesia, Frontend Engineer Jakarta, React.js Expert, Next.js Specialist, UI/UX Developer, JavaScript Developer Indonesia, TypeScript Expert, Web Development Services, Jasa Pembuatan Website, Portfolio Website, Professional Web Developer, Frontend Development Indonesia, React Native Developer" />
         <meta name="author" content="Kiky Restu Noviansyah" />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kikyrestunov.vercel.app/" />
-        <meta property="og:title" content="Kiky Restu Noviansyah - Frontend Developer" />
-        <meta property="og:description" content="Frontend Developer specializing in React, Next.js, and modern web technologies" />
+        <meta property="og:title" content="Kiky Restu Noviansyah - Expert Frontend Developer Indonesia" />
+        <meta property="og:description" content="Frontend Developer spesialis React & Next.js dengan fokus pada performa dan user experience. Berpengalaman dalam pembuatan website modern dan aplikasi web yang scalable." />
         <meta property="og:image" content="/og-image.jpg" />
 
         {/* Twitter */}
@@ -130,6 +144,53 @@ export default function RootLayout({ children }) {
           name="google-site-verification" 
           content="google8366d1a87ce1c8d2" 
         />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Kiky Restu Noviansyah",
+            "jobTitle": "Frontend Developer",
+            "description": "Professional Frontend Developer dari Indonesia dengan spesialisasi di React.js dan Next.js",
+            "url": "https://kikyrestunov.vercel.app",
+            "image": "https://kikyrestunov.vercel.app/og-image.jpg",
+            "sameAs": [
+              "https://github.com/kikyrestu",
+              "https://linkedin.com/in/kikyrestu"
+            ],
+            "knowsAbout": [
+              "React",
+              "Next.js",
+              "JavaScript",
+              "TypeScript",
+              "Frontend Development",
+              "Web Development",
+              "UI/UX Design",
+              "Responsive Design",
+              "Web Performance Optimization"
+            ],
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Freelance Frontend Developer"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "Indonesia"
+            },
+            "makesOffer": [
+              {
+                "@type": "Offer",
+                "name": "Frontend Development Services",
+                "description": "Pengembangan website modern menggunakan React.js dan Next.js"
+              },
+              {
+                "@type": "Offer",
+                "name": "Web Application Development",
+                "description": "Pembuatan aplikasi web yang responsif dan performa tinggi"
+              }
+            ]
+          })}
+        </script>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} ${spaceGrotesk.variable} ${outfit.variable} ${syne.variable} ${orbitron.variable} font-poppins`}>
         {children}
