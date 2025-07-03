@@ -5,6 +5,7 @@ import { Inter, Space_Grotesk } from 'next/font/google'
 import { Outfit } from 'next/font/google'
 import { Syne } from 'next/font/google'
 import { Orbitron } from 'next/font/google'
+import { Toaster } from 'react-hot-toast'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -194,6 +195,29 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} ${spaceGrotesk.variable} ${outfit.variable} ${syne.variable} ${orbitron.variable} font-poppins`}>
         {children}
+        <Toaster 
+          position="bottom-right"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              background: '#1e293b',
+              color: '#fff',
+              border: '1px solid #475569'
+            },
+            success: {
+              iconTheme: {
+                primary: '#10b981',
+                secondary: '#fff'
+              }
+            },
+            error: {
+              iconTheme: {
+                primary: '#ef4444',
+                secondary: '#fff'
+              }
+            }
+          }}
+        />
       </body>
     </html>
   );

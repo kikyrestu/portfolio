@@ -1,0 +1,70 @@
+[
+  {
+    "id": "forum-gamer",
+    "title": "Forum Gamer",
+    "description": "A gaming community platform featuring game-specific zones (FPS, MOBA, RPG, Sports), trending discussions, live chat, and real-time thread updates. Built with modern tech stack for Indonesian gamers to connect and share gaming experiences.",
+    "image": "/projects/image.png",
+    "tech": [
+      "Next.js",
+      "Firebase",
+      "Tailwind CSS",
+      "React"
+    ],
+    "liveUrl": "https://forum-gamer.vercel.app",
+    "githubUrl": "https://github.com/kikyrestu/forum-gamer",
+    "featured": true,
+    "category": "Web Application",
+    "createdAt": "2024-01-15"
+  },
+  {
+    "id": "web-kasir",
+    "title": "Web Kasir - Point of Sale System",
+    "description": "A comprehensive web-based POS system with features including product management, transaction handling, thermal receipt printing, sales reporting (daily/monthly/yearly), customer management, and barcode integration. Built with Django and PostgreSQL.",
+    "image": "/projects/image-2.jpg",
+    "tech": [
+      "Django",
+      "PostgreSQL",
+      "Bootstrap",
+      "jQuery",
+      "Docker"
+    ],
+    "liveUrl": "",
+    "githubUrl": "https://github.com/kikyrestu/web-kasir",
+    "featured": true,
+    "category": "Web Application",
+    "createdAt": "2024-02-10"
+  },
+  {
+    "id": "wordpress-plugin",
+    "title": "WordPress Custom Card Plugin",
+    "description": "A custom WordPress plugin that adds card widgets to the Elementor page builder. Features include ACF integration, button customization options, flexible styling settings, and responsive design support. Built to enhance content presentation with modern UI components.",
+    "image": "/projects/image-3.jpg",
+    "tech": [
+      "PHP",
+      "WordPress",
+      "Elementor",
+      "ACF Pro",
+      "CSS",
+      "JavaScript"
+    ],
+    "liveUrl": "",
+    "githubUrl": "https://github.com/kikyrestu/plugin-custom",
+    "featured": true,
+    "category": "WordPress Plugin",
+    "createdAt": "2024-03-05"
+  },
+  {
+    "title": "Website Twins Rental Motor Banyuwangi",
+    "description": "Twins Rental Motor Banyuwangi is a motorcycle rental website built with WordPress, designed to streamline the motorbike booking process for both local residents and tourists visiting Banyuwangi.\n\nKey features include:\n\nA complete listing of available motorbikes with daily and weekly pricing\n\nQuick and simple booking form\n\nWhatsApp integration for instant communication\n\nFully responsive and mobile-friendly design\n\nLocal SEO optimization to improve Google visibility\n\nThis website helps digitize the rental experience, making it easier, faster, and more reliable for users to find and book motorbikes online—anytime, anywhere.",
+    "image": "/projects/project-1751560794647.png",
+    "tech": [
+      "WordPress"
+    ],
+    "liveUrl": "https://twinsrentalmotor.com/",
+    "githubUrl": "",
+    "featured": true,
+    "category": "Web Application",
+    "id": "website-twins-rental-motor-banyuwangi",
+    "createdAt": "2025-07-03"
+  }
+]

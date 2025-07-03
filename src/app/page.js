@@ -73,6 +73,22 @@ const handleEmailClick = () => {
 };
 
 export default function Home() {
+  const [projects, setProjects] = useState([])
+
+  // Load projects from JSON
+  useEffect(() => {
+    const loadProjects = async () => {
+      try {
+        const response = await fetch('/api/projects')
+        const data = await response.json()
+        setProjects(data)
+      } catch (error) {
+        console.error('Error loading projects:', error)
+      }
+    }
+    loadProjects()
+  }, [])
+
   const roles = [
     "UI/UX Designer",
     "WordPress Developer",
@@ -407,64 +423,27 @@ export default function Home() {
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {/* Forum Gamer Project */}
-            <ProjectCard 
-              title="Forum Gamer"
-              description="A gaming community platform featuring game-specific zones (FPS, MOBA, RPG, Sports), 
-                          trending discussions, live chat, and real-time thread updates. Built with modern tech stack 
-                          for Indonesian gamers to connect and share gaming experiences."
-              tech={["Next.js", "Firebase", "Tailwind CSS", "React"]}
-              image="/projects/image.png"
-              liveUrl="https://forum-gamer.vercel.app"
-              githubUrl="https://github.com/kikyrestu/forum-gamer"
-            />
-
-            {/* Point of Sale Project */}
-            <ProjectCard 
-              title="Web Kasir - Point of Sale System"
-              description="A comprehensive web-based POS system with features including product management, 
-                          transaction handling, thermal receipt printing, sales reporting (daily/monthly/yearly), 
-                          customer management, and barcode integration. Built with Django and PostgreSQL."
-              tech={[
-                "Django", 
-                "PostgreSQL", 
-                "Bootstrap", 
-                "jQuery",
-                "Docker"
-              ]}
-              image="/projects/image-2.jpg"
-              githubUrl="https://github.com/kikyrestu/web-kasir"
-            />
-
-            {/* WordPress Plugin Project */}
-            <ProjectCard 
-              title="WordPress Custom Card Plugin"
-              description="A custom WordPress plugin that adds card widgets to the Elementor page builder. 
-                          Features include ACF integration, button customization options, flexible styling settings, 
-                          and responsive design support. Built to enhance content presentation with modern UI components."
-              tech={[
-                "PHP",
-                "WordPress",
-                "Elementor",
-                "ACF Pro",
-                "CSS",
-                "JavaScript"
-              ]}
-              image="/projects/image-3.jpg"
-              githubUrl="https://github.com/kikyrestu/plugin-custom"
-            />
+            {projects.filter(project => project.featured).map((project) => (
+              <ProjectCard 
+                key={project.id}
+                title={project.title}
+                description={project.description}
+                tech={project.tech}
+                image={project.image}
+                liveUrl={project.liveUrl}
+                githubUrl={project.githubUrl}
+              />
+            ))}
           </div>
 
           {/* View More Button */}
           <div className="mt-12 text-center">
             <a
-              href="https://github.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/projects"
               className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800/50 text-slate-200 
                        rounded border border-slate-700 hover:border-purple-400 transition-colors"
             >
-              View More Projects
+              View All Projects
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
